@@ -11,19 +11,19 @@ function App() {
     setLocaisVacinacaoPorBairro
   ] = React.useState([]);
 
-  const [bairros, setBairros] = React.useState([]);
+  const [listaBairro, setListaBairro] = React.useState([]);
 
   const [bairro, setBairro] = React.useState("");
 
   function extrairBairrosUnicosEOrdenar() {
-    let bairrosAux = [];
+    let listaBairroAux = [];
 
     getTodosLocaisVacinacaoRecife().forEach(function (localVacinacao) {
-      if (bairrosAux.includes(localVacinacao.bairro));
-      else bairrosAux = [...bairrosAux, localVacinacao.bairro];
+      if (listaBairroAux.includes(localVacinacao.bairro));
+      else listaBairroAux = [...listaBairroAux, localVacinacao.bairro];
     });
 
-    return bairrosAux.sort();
+    return listaBairroAux.sort();
   }
 
   function getLocaisVacinacaoPorBairro() {
@@ -37,10 +37,10 @@ function App() {
     return locaisVacinacaoPorBairro;
   }
 
-  // criar array com os nomes dos bairros sem repetição
+  // criar array com os nomes dos listaBairro sem repetição
 
   React.useEffect(function setInitialData() {
-    setBairros(extrairBairrosUnicosEOrdenar());
+    setListaBairro(extrairBairrosUnicosEOrdenar());
 
     setTodosLocaisVacinacao(getTodosLocaisVacinacaoRecife());
   }, []);
@@ -57,7 +57,7 @@ function App() {
       <h1>Componente App</h1>
 
       <ControlledOpenSelect
-        bairros={bairros}
+        listaBairro={listaBairro}
         bairro={bairro}
         setBairro={setBairro}
       />

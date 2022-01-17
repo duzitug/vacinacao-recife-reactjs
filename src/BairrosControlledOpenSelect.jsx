@@ -17,7 +17,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function ControlledOpenSelect({ bairros, bairro, setBairro }) {
+export default function BairrosControlledOpenSelect({
+  listaBairro,
+  bairro,
+  setBairro
+}) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -51,7 +55,7 @@ export default function ControlledOpenSelect({ bairros, bairro, setBairro }) {
           value={bairro}
           onChange={handleChange}
         >
-          {bairros.map(function (bairro) {
+          {listaBairro.map(function (bairro) {
             return <MenuItem value={bairro}>{bairro}</MenuItem>;
           })}
         </Select>
