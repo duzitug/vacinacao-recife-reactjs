@@ -17,13 +17,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function ControlledOpenSelect({ bairros }) {
+export default function ControlledOpenSelect({ bairros, bairro, setBairro }) {
   const classes = useStyles();
-  const [age, setAge] = React.useState("");
   const [open, setOpen] = React.useState(false);
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setBairro(event.target.value);
   };
 
   const handleClose = () => {
@@ -49,7 +48,7 @@ export default function ControlledOpenSelect({ bairros }) {
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
-          value={age}
+          value={bairro}
           onChange={handleChange}
         >
           {bairros.map(function (bairro) {

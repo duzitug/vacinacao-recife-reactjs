@@ -1,4 +1,4 @@
-export function getLocaisVacinacaoRecife() {
+export function getTodosLocaisVacinacaoRecife() {
   return [
     {
       _id: 1,

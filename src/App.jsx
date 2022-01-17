@@ -1,17 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import ControlledOpenSelect from "./ControlledOpenSelect";
-import { getLocaisVacinacaoRecife } from "./data";
+import { getTodosLocaisVacinacaoRecife } from "./data";
 
 function App() {
-  const [locaisVacinacaoRecife, setLocaisVacinacaoRecife] = React.useState([]);
+  const [todosLocaisVacinacao, setTodosLocaisVacinacao] = React.useState([]);
+
+  const [
+    locaisVacinacaoPorBairro,
+    setLocaisVacinacaoPorBairro
+  ] = React.useState([]);
 
   const [bairros, setBairros] = React.useState([]);
+
+  const [bairro, setBairro] = React.useState("");
 
   function extrairBairrosUnicosEOrdenar() {
     let bairrosAux = [];
 
-    getLocaisVacinacaoRecife().forEach(function (localVacinacao) {
+    getTodosLocaisVacinacaoRecife().forEach(function (localVacinacao) {
       if (bairrosAux.includes(localVacinacao.bairro));
       else bairrosAux = [...bairrosAux, localVacinacao.bairro];
     });
@@ -19,19 +26,43 @@ function App() {
     return bairrosAux.sort();
   }
 
+  function getLocaisVacinacaoPorBairro() {
+    const locaisVacinacaoPorBairro = [];
+
+    todosLocaisVacinacao.forEach(function (localVacinacao) {
+      if (localVacinacao.bairro === bairro)
+        locaisVacinacaoPorBairro.push(localVacinacao);
+    });
+
+    return locaisVacinacaoPorBairro;
+  }
+
   // criar array com os nomes dos bairros sem repetição
 
   React.useEffect(function setInitialData() {
     setBairros(extrairBairrosUnicosEOrdenar());
 
-    setLocaisVacinacaoRecife(getLocaisVacinacaoRecife());
+    setTodosLocaisVacinacao(getTodosLocaisVacinacaoRecife());
   }, []);
+
+  React.useEffect(
+    function () {
+      console.log(getLocaisVacinacaoPorBairro());
+    },
+    [bairro]
+  );
 
   return (
     <>
       <h1>Componente App</h1>
 
-      <ControlledOpenSelect bairros={bairros} />
+      <ControlledOpenSelect
+        bairros={bairros}
+        bairro={bairro}
+        setBairro={setBairro}
+      />
+
+      {bairro}
     </>
   );
 }
