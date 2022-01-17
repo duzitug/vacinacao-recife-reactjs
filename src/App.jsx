@@ -8,7 +8,7 @@ function App() {
 
   const [bairros, setBairros] = React.useState([]);
 
-  function extrairBairrosUnicos() {
+  function extrairBairrosUnicosEOrdenar() {
     let bairrosAux = [];
 
     getLocaisVacinacaoRecife().forEach(function (localVacinacao) {
@@ -16,13 +16,13 @@ function App() {
       else bairrosAux = [...bairrosAux, localVacinacao.bairro];
     });
 
-    return bairrosAux;
+    return bairrosAux.sort();
   }
 
   // criar array com os nomes dos bairros sem repetição
 
   React.useEffect(function setInitialData() {
-    setBairros(extrairBairrosUnicos());
+    setBairros(extrairBairrosUnicosEOrdenar());
 
     setLocaisVacinacaoRecife(getLocaisVacinacaoRecife());
   }, []);
