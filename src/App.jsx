@@ -21,7 +21,7 @@ function App() {
 
   // criar array com os nomes dos bairros sem repetição
 
-  React.useEffect(function () {
+  React.useEffect(function setInitialData() {
     setBairros(extrairBairrosUnicos());
 
     setLocaisVacinacaoRecife(getLocaisVacinacaoRecife());
@@ -31,11 +31,7 @@ function App() {
     <>
       <h1>Componente App</h1>
 
-      <ControlledOpenSelect />
-
-      {bairros.map((bairro) => (
-        <h6> {bairro} </h6>
-      ))}
+      <ControlledOpenSelect bairros={bairros} />
     </>
   );
 }

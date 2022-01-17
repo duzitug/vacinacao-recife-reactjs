@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function ControlledOpenSelect() {
+export default function ControlledOpenSelect({ bairros }) {
   const classes = useStyles();
   const [age, setAge] = React.useState("");
   const [open, setOpen] = React.useState(false);
@@ -52,9 +52,9 @@ export default function ControlledOpenSelect() {
           value={age}
           onChange={handleChange}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {bairros.map(function (bairro) {
+            return <MenuItem value={bairro}>{bairro}</MenuItem>;
+          })}
         </Select>
       </FormControl>
     </div>

@@ -222,8 +222,8 @@ export function getLocaisVacinacaoRecife() {
     {
       _id: 19,
       Local: "Policlínica Salomão Kelner",
-      logradouro: "Estrada Velha de água Fria, 1652",
-      bairro: "água Fria",
+      logradouro: "Estrada Velha de Água Fria, 1652",
+      bairro: "Água Fria",
       fone: "",
       como_usar:
         "Os usuários devem levar um documento oficial de identificação e documentos comprobatórios e/ou comprovante de residência em seu nome, quando for necessário. Nos casos de 2a dose, levar documento e o cartão de vacinação.",
