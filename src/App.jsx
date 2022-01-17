@@ -8,23 +8,21 @@ function App() {
 
   const [bairros, setBairros] = React.useState([]);
 
+  function extrairBairrosUnicos() {
+    let bairrosAux = [];
+
+    getLocaisVacinacaoRecife().forEach(function (localVacinacao) {
+      if (bairrosAux.includes(localVacinacao.bairro));
+      else bairrosAux = [...bairrosAux, localVacinacao.bairro];
+    });
+
+    return bairrosAux;
+  }
+
   // criar array com os nomes dos bairros sem repetição
 
   React.useEffect(function () {
-    const locaisVacinacao = getLocaisVacinacaoRecife();
-
-    let bairrosAux = [];
-
-    locaisVacinacao.forEach(function (localVacinacao) {
-      if (bairrosAux.includes(localVacinacao.bairro)) {
-        // não está entrando aqui, por que ?????
-        console.log("contem");
-      } else {
-        bairrosAux = [...bairrosAux, localVacinacao.bairro];
-      }
-    });
-
-    setBairros(bairrosAux);
+    setBairros(extrairBairrosUnicos());
 
     setLocaisVacinacaoRecife(getLocaisVacinacaoRecife());
   }, []);
