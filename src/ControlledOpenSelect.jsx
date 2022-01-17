@@ -37,11 +37,11 @@ export default function ControlledOpenSelect() {
   return (
     <div>
       <Button className={classes.button} onClick={handleOpen}>
-        Open the select
+        Selecione o Bairro
       </Button>
 
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Age</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label">Bairro</InputLabel>
 
         <Select
           labelId="demo-controlled-open-select-label"
@@ -52,9 +52,6 @@ export default function ControlledOpenSelect() {
           value={age}
           onChange={handleChange}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
           <MenuItem value={10}>Ten</MenuItem>
           <MenuItem value={20}>Twenty</MenuItem>
           <MenuItem value={30}>Thirty</MenuItem>
