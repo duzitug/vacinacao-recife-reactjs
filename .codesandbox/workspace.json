@@ -27,6 +27,9 @@
           "id": "codesandbox.console"
         },
         {
+          "id": "codesandbox.react-devtools"
+        },
+        {
           "id": "codesandbox.tests"
         }
       ]
@@ -35,9 +38,6 @@
       "views": [
         {
           "id": "codesandbox.problems"
-        },
-        {
-          "id": "codesandbox.react-devtools"
         }
       ]
     }

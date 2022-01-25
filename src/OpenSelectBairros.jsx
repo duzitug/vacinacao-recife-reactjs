@@ -17,11 +17,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function BairrosControlledOpenSelect({
-  listaBairro,
-  bairro,
-  setBairro
-}) {
+export default function OpenSelectBairros({ listaBairro, bairro, setBairro }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
