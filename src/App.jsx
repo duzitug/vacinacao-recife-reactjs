@@ -14,7 +14,7 @@ function App() {
 
   const [listaBairro, setListaBairro] = React.useState([]);
 
-  const [bairro, setBairro] = React.useState();
+  const [bairro, setBairro] = React.useState(null);
 
   function extrairBairrosUnicosEOrdenar() {
     let listaBairroAux = [];
@@ -30,6 +30,8 @@ function App() {
   function getLocaisVacinacaoPorBairro() {
     // por que o locaisVacinacaoPorBairro não está
     // sendo setado para um array vazio ???
+
+    if (locaisVacinacaoPorBairro.length !== 0) setLocaisVacinacaoPorBairro([]);
 
     todosLocaisVacinacao.forEach(function (localVacinacao) {
       if (localVacinacao.bairro === bairro)
@@ -53,22 +55,10 @@ function App() {
   //Por que há um sincronismo entre os efeitos ??
 
   React.useEffect(
-    // altera o estado de locaisVacinacaoPorBairro para um array vazio
-    // sempre que um novo bairro é selecionado
     function () {
-      setLocaisVacinacaoPorBairro([]);
+      if (bairro !== null) getLocaisVacinacaoPorBairro();
     },
     [bairro]
-  );
-
-  React.useEffect(
-    // chama a função getLocaisVacinacaoPorBairro sempŕe que o estado locaisVacinacaoPorBairro
-    // é alterado e o estado locaisVacinacaoPorBairro é um array vazio
-    function abc() {
-      // sem este if entra em loop infinito, por que??
-      if (locaisVacinacaoPorBairro.length === 0) getLocaisVacinacaoPorBairro();
-    },
-    [locaisVacinacaoPorBairro]
   );
 
   return (
